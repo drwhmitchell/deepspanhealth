@@ -11415,8 +11415,10 @@ header.masthead {
   padding-bottom: calc(10rem - 4.5rem);
 /*
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
+
+background: linear-gradient(to bottom, rgba(0, 51, 102, 0.8) 0%, rgba(0, 51, 102, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
 */
-  background: linear-gradient(to bottom, rgba(0, 67, 168, 0.10) 0%, rgba(0, 67, 168, 0.850) 50%), url("../assets/img/bg-masthead.jpg");
+  background: url("../assets/img/bg-masthead.jpg");
 
   background-position: center;
   background-repeat: no-repeat;
