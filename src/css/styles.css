@@ -11,6 +11,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+ html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 
  header.masthead {
   height: 100vh;
