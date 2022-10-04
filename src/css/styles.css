@@ -2513,8 +2513,8 @@ textarea.form-control-lg {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  /*-webkit-print-color-adjust: exact; */
+  /*        color-adjust: exact;  */
 }
 .form-check-input[type=checkbox] {
   border-radius: 0.25em;
@@ -11436,7 +11436,8 @@ header.masthead {
 /*
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
 */
-  background: linear-gradient(to bottom, rgba(0, 67, 168, 0.10) 0%, rgba(0, 67, 168, 0.850) 50%), url("../assets/img/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(0, 67, 168, 0.10) 0%, rgba(0, 67, 168, 0.850) 50%), url("../assets/img/HealthNavHero.jpg"); 
+ /* background: url("../assets/img/HealthNavHero.jpg"); */
 
   background-position: center;
   background-repeat: no-repeat;
