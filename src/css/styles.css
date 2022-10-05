@@ -3056,7 +3056,7 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-  color: rgb(195, 195, 195);
+  color: rgb(235, 233, 233, 0.9);
   /*
   background-color: #f4623a;
   border-color: #f4623a;
@@ -3066,8 +3066,8 @@ textarea.form-control-lg {
   border-color: rgba(0, 191, 255, 0.9);
 */
 
-background-color: rgba(171, 32, 92, .8);
-border-color:  rgba(171, 32, 92, .8);
+background-color: rgba(171, 32, 92, .9);
+border-color:  rgba(171, 32, 92, .9);
 
 }
 .btn-primary:hover {
