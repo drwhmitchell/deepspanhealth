@@ -3056,13 +3056,18 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-  color: #fff;
+  color: rgb(195, 195, 195);
   /*
   background-color: #f4623a;
   border-color: #f4623a;
   */
+/*
   background-color: rgba(0, 191, 255, 0.9);
   border-color: rgba(0, 191, 255, 0.9);
+*/
+
+  background-color: rgba(98, 46, 98, 1);
+  border-color:  rgba(98, 46, 98, 1);
 
 }
 .btn-primary:hover {
@@ -3071,9 +3076,15 @@ textarea.form-control-lg {
   background-color: #cf5331;
   border-color: #c34e2e;
   */
-
+/*
   background-color: rgba(5, 159, 211, 1);
   border-color: rgba(5, 159, 211, 1);
+*/
+
+background-color: rgba(171, 32, 92, 1);
+border-color:  rgba(171, 32, 92, 1);
+
+
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
