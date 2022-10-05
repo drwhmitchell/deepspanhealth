@@ -3066,8 +3066,8 @@ textarea.form-control-lg {
   border-color: rgba(0, 191, 255, 0.9);
 */
 
-  background-color: rgba(98, 46, 98, 1);
-  border-color:  rgba(98, 46, 98, 1);
+background-color: rgba(171, 32, 92, .8);
+border-color:  rgba(171, 32, 92, .8);
 
 }
 .btn-primary:hover {
