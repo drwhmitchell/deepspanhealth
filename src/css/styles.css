@@ -11519,5 +11519,6 @@ background: rgba(0, 191, 255, 0.9);
 
 .portfolio-box {
   padding: 1em;
-  background: rgba(0, 191, 255, 0.9);
+/*  background: rgba(0, 191, 255, 0.9); */
+  background: white;
 }
