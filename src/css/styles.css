@@ -11522,3 +11522,7 @@ background: rgba(0, 191, 255, 0.9);
 /*  background: rgba(0, 191, 255, 0.9); */
   background: white;
 }
+
+#portfolio {
+  justify-content: center;
+}
