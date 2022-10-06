@@ -57,3 +57,42 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+// Cookie stuff
+
+/* Javascript to show and hide cookie banner using localstorage */
+/* Shows the Cookie banner */
+function showCookieBanner(){
+console.log("ShowCookie Banner");
+    let cookieBanner = document.getElementById("cb-cookie-banner");
+    cookieBanner.style.display = "block";
+   }
+   
+   /* Hides the Cookie banner and saves the value to localstorage */
+   function hideCookieBanner(){
+    localStorage.setItem("cb_isCookieAccepted", "yes");
+    let cookieBanner = document.getElementById("cb-cookie-banner");
+    cookieBanner.style.display = "none";
+   }
+   
+   /* Checks the localstorage and shows Cookie banner based on it. */
+   function initializeCookieBanner(){
+console.log("Initialize Cookie banner");
+    let isCookieAccepted = localStorage.getItem("cb_isCookieAccepted");
+    if(isCookieAccepted === null)
+    {
+console.log("Cookie is 'NULL'");
+     localStorage.setItem("cb_isCookieAccepted", "no");
+     showCookieBanner();
+    }
+    if(isCookieAccepted === "no"){
+console.log("Cookie is 'NO'");
+     showCookieBanner();
+    }
+    else console.log("Cookies are accepted:" + isCookieAccepted);
+   }
+   
+   // Assigning values to window object
+   localStorage.setItem("cb_isCookieAccepted", "no");
+   window.onload = initializeCookieBanner();
+   window.cb_hideCookieBanner = hideCookieBanner;
