@@ -96,3 +96,36 @@ console.log("Cookie is 'NO'");
    localStorage.setItem("cb_isCookieAccepted", "no");
    window.onload = initializeCookieBanner();
    window.cb_hideCookieBanner = hideCookieBanner;
+
+
+   // Custom Form submission API 
+
+async function SubmitFormData() {
+    var dsData = null;  
+    console.log("Entered SubmitFormData()");
+  
+    const formData = {
+        Name : document.getElementById("name").value, 
+        Email : document.getElementById("email").value, 
+        Interest : document.getElementById("message").value, 
+    };
+    const bodyData = {
+        datajson : JSON.stringify(formData),
+    };
+  
+    console.log("About to submit a form: " + bodyData);
+    
+    const res = await fetch('https://sleepnet.appspot.com/api/about/contact/sendemail', {
+      method: "POST",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bodyData)
+      })
+      .then (res => res.json())
+      .then(dataBack =>  { 
+         console.log("Data Back from SubmitFormPost:" + dataBack);
+                         });
+  }
+  
