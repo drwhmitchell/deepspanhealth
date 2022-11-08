@@ -118,6 +118,8 @@ console.log("Cookie is 'NO'");
     }
   }
 
+  //Global for after submittion
+  var hasSubmitted;
   //Input Validation Eventes
   function ValidateInput(inputId, alertId){
       let input = document.getElementById(inputId).value;
@@ -125,7 +127,7 @@ console.log("Cookie is 'NO'");
       if(isValid){
         document.getElementById(alertId).style.display = 'none'
       }
-      else{
+      else if(hasSubmitted){
         document.getElementById(alertId).style.display = 'block'
       }
       return isValid;
@@ -141,9 +143,10 @@ console.log("Cookie is 'NO'");
    // Custom Form submission API 
 
 async function SubmitFormData() {
+    document.getElementById('contactSubmitBtn').classList.add('disabled')
     var dsData = null;  
     console.log("Entered SubmitFormData()");
-  
+    hasSubmitted  = true;
     let name     = document.getElementById("name").value;
     let email    = document.getElementById("email").value;
     let interest = document.getElementById("message").value;
@@ -151,7 +154,6 @@ async function SubmitFormData() {
     let emailValid    = ValidateInput('email','invalidEmailAlert');
     let nameValid     = ValidateInput('name','invalidNameAlert');
     let interestValid = ValidateInput('message','invalidInterestAlert');
-
     // if all fields valid, submit form
     if(emailValid && nameValid && interestValid){
         const formData = {
@@ -181,12 +183,14 @@ async function SubmitFormData() {
                 styles: {
                   backgroundColor: 'green',
                   fontSize: "30px",
-                  marginTop: '200px' 
+                  marginTop: '200px',
+                  fontFamily:'Segoe UI'
                 },
                 align: 'center',
                 valign: 'top'
               })
              ClearInputs();
+             document.getElementById('contactSubmitBtn').classList.remove('disabled')
           });
     }
     
