@@ -18,6 +18,12 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
 
+        <!-- TOASTS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/toastmaker/dist/toastmaker.min.css">
+        <script type="text/javascript" src="https://unpkg.com/toastmaker/dist/toastmaker.min.js"></script>
+
+
     </head>
     <body id="page-top">
 
@@ -184,23 +190,28 @@
                         <form id="contactForm">
                             <!-- Name input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" oninput="ValidateInput('name', 'invalidNameAlert')" />
                                 <label for="name">Full name</label>
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                <div class="alert alert-danger" role="alert" style="margin-top:10px; display: none;" id="invalidNameAlert">
+                                    Please enter your full name
+                                </div>
                             </div>
                             <!-- Email address input-->
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" oninput="ValidateInput('email', 'invalidEmailAlert')" />
                                 <label for="email">Email address</label>
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                <div class="alert alert-danger" role="alert" style="margin-top:10px; display: none;" id="invalidEmailAlert">
+                                    Please enter a valid email
+                                </div>
                             </div>
 
                             <!-- Message input-->
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"  oninput="ValidateInput('message', 'invalidInterestAlert')"></textarea>
                                 <label for="message">Your Interest</label>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                                <div class="alert alert-danger" role="alert" style="margin-top:10px; display: none;" id="invalidInterestAlert">
+                                    Interest message is required
+                                </div>
                             </div>
                             <!-- Submit success message-->
                             <!---->
