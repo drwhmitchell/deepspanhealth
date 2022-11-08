@@ -193,6 +193,9 @@ async function SubmitFormData() {
              document.getElementById('contactSubmitBtn').classList.remove('disabled')
           });
     }
+    else{
+        document.getElementById('contactSubmitBtn').classList.remove('disabled')
+    }
     
   }
 
