@@ -98,34 +98,98 @@ console.log("Cookie is 'NO'");
    window.cb_hideCookieBanner = hideCookieBanner;
 
 
+  //HELPERS FOR FORM DATA SUBMISSION VALIDATION
+  function IsValidInput(inputId, input){
+    switch(inputId){
+        case 'name':
+            return input.match(
+                /^(\s)*[A-Za-z]+((\s)?((\'|\-|\.)?([A-Za-z])+))*(\s)*$/
+              );
+        case 'email':
+            return input.match(
+                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+              );
+        case 'message':
+            return input.match(
+                /^(?!\s*$)[a-zA-Z.+\s'-]+$/
+              );
+        default:
+            return false;
+    }
+  }
+
+  //Input Validation Eventes
+  function ValidateInput(inputId, alertId){
+      let input = document.getElementById(inputId).value;
+      let isValid = IsValidInput(inputId, input);
+      if(isValid){
+        document.getElementById(alertId).style.display = 'none'
+      }
+      else{
+        document.getElementById(alertId).style.display = 'block'
+      }
+      return isValid;
+  }
+
+  function ClearInputs(){
+    document.getElementById("name").value = null;
+    document.getElementById("email").value = null;
+    document.getElementById("message").value = null;
+  }
+
+
    // Custom Form submission API 
 
 async function SubmitFormData() {
     var dsData = null;  
     console.log("Entered SubmitFormData()");
   
-    const formData = {
-        Name : document.getElementById("name").value, 
-        Email : document.getElementById("email").value, 
-        Interest : document.getElementById("message").value, 
-    };
-    const bodyData = {
-        datajson : JSON.stringify(formData),
-    };
-  
-    console.log("About to submit a form: " + bodyData);
+    let name     = document.getElementById("name").value;
+    let email    = document.getElementById("email").value;
+    let interest = document.getElementById("message").value;
+
+    let emailValid    = ValidateInput('email','invalidEmailAlert');
+    let nameValid     = ValidateInput('name','invalidNameAlert');
+    let interestValid = ValidateInput('message','invalidInterestAlert');
+
+    // if all fields valid, submit form
+    if(emailValid && nameValid && interestValid){
+        const formData = {
+            Name : name, 
+            Email : email, 
+            Interest : interest, 
+        };
+        const bodyData = {
+            datajson : JSON.stringify(formData),
+        };
+      
+        console.log("About to submit a form: " );
+        console.log(bodyData);
+        
+        const res = await fetch('https://sleepnet.appspot.com/api/about/contact/sendemail', {
+          method: "POST",
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(bodyData)
+          })
+          .then (res => res.json())
+          .then(dataBack =>  { 
+             console.log("Data Back from SubmitFormPost:" + dataBack);
+             ToastMaker("Contact Submitted Successfully!", 5000, {
+                styles: {
+                  backgroundColor: 'green',
+                  fontSize: "30px",
+                  marginTop: '200px' 
+                },
+                align: 'center',
+                valign: 'top'
+              })
+             ClearInputs();
+          });
+    }
     
-    const res = await fetch('https://sleepnet.appspot.com/api/about/contact/sendemail', {
-      method: "POST",
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(bodyData)
-      })
-      .then (res => res.json())
-      .then(dataBack =>  { 
-         console.log("Data Back from SubmitFormPost:" + dataBack);
-                         });
   }
+
   
